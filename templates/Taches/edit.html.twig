@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block title "Editer les Taches"%} 
+{% block body %}
+
+<div class="container mt-4">
+    <h1> Editer la tache  </h1>
+          {{ include ('Taches/_form.html.twig', {form: form, button: "Editer" }) }}
+          <form method ="POST" action="{{path('admin.tache.delete',{ id:tache.id }) }}" style = "display:inline-block" onsubmit ="return confirm ('etes vous sur?')">
+          <input type ="hidden" name = "_method" value = "DELETE"></input>
+          <button class ="btn btn-danger"> Supprimer  </button>
+          </form>
+ 
+</div>    
+ 
+
+{% endblock %}

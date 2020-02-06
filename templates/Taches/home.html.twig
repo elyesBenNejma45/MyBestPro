@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1> welcome  </h1>
+    <p>  hello world </p>
+</div>
+<div class ="container">
+<h2> les Taches</h2>
+<div class="row flex">
+    <div class="col-3">
+        <div class="card">
+            <div class ="card-body">
+                <h5 class ="carde-title">
+                <a href="{{path('tache.show') }}">the line</a>
+                </h5>
+                <p class ="card-text">alo it is time</p>
+                <div class="text-primary" style="font-weight:bold;font-size:2rem">il joue</div>
+                <a href="" class="btn btn-primary">retour au taches</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

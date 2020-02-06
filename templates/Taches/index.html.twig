@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block title "Gérer les Taches"%} 
+{% block body %}
+
+<div class="container mt-4">
+    <h1> Gérer les taches  </h1>
+    {% for message in app.flashes('success')%}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}    
+    <table class="table table-striped">
+        <thread>
+        <tr>
+        <th> Titre</th>
+        <th> Statut</th>
+        <th> Date de Création</th>
+        <th> Date de Mise à jour</th>
+        <th> Action</th>
+        </tr>
+        </thread>
+        <tbody>
+            {% for tache in taches|sort((a,b) => a.dateDeCreation <=> b.dateDeCreation) %}
+            <tr>
+                <td> {{tache.titre}}</td>
+                <td> {{tache.statut}}</td>
+                <td> {{tache.dateDeCreation|date("m/d/Y")}}</td>
+                <td> {{tache.dateMiseAjour is empty ? "n'est pas mettre à jour" : tache.dateMiseAjour|date("F jS \\a\\t g:ia")}}</td>
+                <td> 
+                <a href="{{path('admin.tache.edit',{id:tache.id})}}" class= "btn btn-secondary"> Editer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-right">
+        <a href="{{path('admin.tache.new')}}" class="btn btn-primary">Créer une nouvelle tache</a>
+    </div>
+</div>    
+ 
+
+{% endblock %}

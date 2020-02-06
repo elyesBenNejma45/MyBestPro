@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block title "Editer les Taches"%} 
+{% block body %}
+
+<div class="container mt-4">
+    <h1> Créer une Nouvelle Tache   </h1>
+    {{ include ('Taches/_form.html.twig', {form: form, button: "Créer" }) }}
+
+</div>    
+ 
+
+{% endblock %}
