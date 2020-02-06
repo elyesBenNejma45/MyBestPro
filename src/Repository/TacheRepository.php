@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Tache;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Tache|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,22 +21,20 @@ class TacheRepository extends ServiceEntityRepository
         parent::__construct($registry, Tache::class);
     }
 
-    // /**
-    //  * @return Tache[] Returns an array of Tache objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    /**
+    * return Tache[]
     */
+    public function findByStatus(Tache $search): ? array
+    {
+
+        $qb =  $this->createQueryBuilder('p')
+            ->andWhere('p.statut = :statut')
+            ->setParameter('statut', $search->getStatut())
+            ->getQuery();
+            
+            return $qb->execute();
+        
+    }
 
     /*
     public function findOneBySomeField($value): ?Tache

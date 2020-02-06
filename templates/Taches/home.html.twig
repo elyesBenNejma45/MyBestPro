@@ -3,23 +3,38 @@
 {% block body %}
 
 <div class="jumbotron text-center">
-    <h1> welcome  </h1>
-    <p>  hello world </p>
+<div class="jumbotron">
+    <div class = "container">
+     {{form_start(form)}}
+        <div class ="form-row">
+            <div class ="col">
+                {{form_row(form.statut)}} 
+            </div>
+            <div class ="col">
+                <button class ="btn btn-primary" style = "margin-top:30px">Rechercher</button> 
+            </div>
+
+        </div>
+        {{form_end(form)}}
+    </div>
+</div>
 </div>
 <div class ="container">
-<h2> les Taches</h2>
-<div class="row flex">
+    <h2> les Taches</h2>
+    <div class="row flex">
+    {% for tache in tachesSearch %}
     <div class="col-3">
         <div class="card">
             <div class ="card-body">
                 <h5 class ="carde-title">
-                <a href="{{path('tache.show') }}">the line</a>
+                <a href="#">{{tache.titre}}</a>
                 </h5>
-                <p class ="card-text">alo it is time</p>
-                <div class="text-primary" style="font-weight:bold;font-size:2rem">il joue</div>
-                <a href="" class="btn btn-primary">retour au taches</a>
+                <p class ="card-text">{{tache.dateDeCreation|date("m/d/Y")}}</p>
+                <div class="text-primary" style="font-weight:bold;font-size:2rem">{{tache.statut}}</div>
             </div>
         </div>
+    </div>
+        {% endfor %}
     </div>
 </div>
 
