@@ -15,5 +15,5 @@
 
 ## Project Paths
 - / : taches list
-- /tache list search 
+- /tache: list search 
 
