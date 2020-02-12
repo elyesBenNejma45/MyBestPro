@@ -4,7 +4,7 @@
 - symfony 4.1.*
 - PHP 7.2
 - Mysql 5.7
--composer 1.6.5
+- composer 1.6.5
 ## Migrations: Creating the Database and Tables
 - php bin/console doctrine:database:create
 -  php bin/console doctrine:schema:create
